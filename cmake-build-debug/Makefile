@@ -52,10 +52,10 @@ RM = "C:\Program Files\JetBrains\CLion 2020.2.4\bin\cmake\win\bin\cmake.exe" -E 
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\3-groups-of-symbols
+CMAKE_SOURCE_DIR = C:\3_type_of_words
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\3-groups-of-symbols\cmake-build-debug
+CMAKE_BINARY_DIR = C:\3_type_of_words\cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -84,9 +84,9 @@ rebuild_cache\fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\3-groups-of-symbols\cmake-build-debug\CMakeFiles C:\3-groups-of-symbols\cmake-build-debug\CMakeFiles\progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\3_type_of_words\cmake-build-debug\CMakeFiles C:\3_type_of_words\cmake-build-debug\CMakeFiles\progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) all
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\3-groups-of-symbols\cmake-build-debug\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\3_type_of_words\cmake-build-debug\CMakeFiles 0
 .PHONY : all
 
 # The main clean target

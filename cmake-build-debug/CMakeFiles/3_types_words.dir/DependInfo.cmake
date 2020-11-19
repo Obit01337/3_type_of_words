@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "C:/3-groups-of-symbols/main.c" "C:/3-groups-of-symbols/cmake-build-debug/CMakeFiles/3_types_words.dir/main.c.obj"
+  "C:/3_type_of_words/main.c" "C:/3_type_of_words/cmake-build-debug/CMakeFiles/3_types_words.dir/main.c.obj"
   )
 set(CMAKE_C_COMPILER_ID "MSVC")
 

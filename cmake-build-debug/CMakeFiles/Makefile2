@@ -48,10 +48,10 @@ RM = "C:\Program Files\JetBrains\CLion 2020.2.4\bin\cmake\win\bin\cmake.exe" -E 
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\3-groups-of-symbols
+CMAKE_SOURCE_DIR = C:\3_type_of_words
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\3-groups-of-symbols\cmake-build-debug
+CMAKE_BINARY_DIR = C:\3_type_of_words\cmake-build-debug
 
 #=============================================================================
 # Directory level rules for the build root directory
@@ -78,14 +78,14 @@ clean: CMakeFiles\3_types_words.dir\clean
 CMakeFiles\3_types_words.dir\all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\3_types_words.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\3_types_words.dir\depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\3_types_words.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\3_types_words.dir\build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\3-groups-of-symbols\cmake-build-debug\CMakeFiles --progress-num=1,2 "Built target 3_types_words"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=C:\3_type_of_words\cmake-build-debug\CMakeFiles --progress-num=1,2 "Built target 3_types_words"
 .PHONY : CMakeFiles\3_types_words.dir\all
 
 # Build rule for subdir invocation for target.
 CMakeFiles\3_types_words.dir\rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\3-groups-of-symbols\cmake-build-debug\CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\3_type_of_words\cmake-build-debug\CMakeFiles 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 /nologo -$(MAKEFLAGS) CMakeFiles\3_types_words.dir\all
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\3-groups-of-symbols\cmake-build-debug\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\3_type_of_words\cmake-build-debug\CMakeFiles 0
 .PHONY : CMakeFiles\3_types_words.dir\rule
 
 # Convenience name for target.
