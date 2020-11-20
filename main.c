@@ -18,6 +18,7 @@ void puts_text(char** pointer, int num_string);
 int find_words_of_letters(char** pointer, int num_string, int string_length);
 int find_words_of_numbers(char** pointer, int num_string, int string_length);
 int find_words_of_sings(char** pointer,int num_string, int string_length);
+void free_text(char** pointer, int num_string);
 
 int main()
 {
@@ -65,6 +66,7 @@ int main()
         printf_s("number of words is the same and equal %d", words_letters);
     }
     // Freeing memory
+    free_text(text, num_string);
     free(text);
     return 0;
 }
@@ -86,10 +88,13 @@ int check()
 char** create_string_array(char** pointer, int num_string, int string_length)
 {
     if (!(pointer = (char**)malloc(num_string*sizeof(char*))))
-        exit(1);
+        exit(1000);
     for (int i = 0; i < num_string; ++i)
         if (!(pointer[i] = (char*)malloc((string_length+1)*sizeof(char))))
-            exit(1);
+        {
+            free_text(pointer, i);
+            exit(1000);
+        }
     return pointer;
 }
 
@@ -195,4 +200,13 @@ void puts_text(char** pointer, int num_string)
 {
     for (int i = 0; i < num_string; i++)
         puts(pointer[i]);
+}
+
+// Freeing strings memory
+void free_text(char** pointer, int num_strings)
+{
+    for (int i = 0; i < num_strings; ++i)
+    {
+        free(pointer[i]);
+    }
 }
