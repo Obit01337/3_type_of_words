@@ -12,13 +12,11 @@
 #include <stdlib.h>
 
 int check();
-char** create_string_array(char** pointer, int num_string, int string_length);
 void gets_text(char** ptr, int num_string, int string_length);
 void puts_text(char** pointer, int num_string);
 int find_words_of_letters(char** pointer, int num_string, int string_length);
 int find_words_of_numbers(char** pointer, int num_string, int string_length);
 int find_words_of_sings(char** pointer,int num_string, int string_length);
-void free_text(char** pointer, int num_string);
 
 int main()
 {
@@ -28,45 +26,47 @@ int main()
     puts("Enter max length of string");
     int string_length = check();
     char **text = NULL;
-    // Creating array for text
-    text = create_string_array(text, num_string, string_length);
+    // 30-39 creating array for text
+    if (!(text = (char**)malloc(num_string*sizeof(char*))))
+        return 144;
+    for (int i = 0; i < num_string; ++i)
+        if (!(text[i] = (char*)malloc((string_length+1)*sizeof(char))))
+        {
+            for (int j = 0; j < i; j++)
+                free(text[i]);
+            free(text);
+            return 145;
+        }
     puts("Enter your text");
     // Input text
     gets_text(text, num_string, string_length);
     // Output text
     puts_text(text, num_string);
-    // 38-43 find number of words and print it in console
+    // 46-51 finding number of words and print it in console
     int words_letters = find_words_of_letters(text, num_string, string_length);
     printf_s("num words of letters = %d\n", words_letters);
     int words_numbers = find_words_of_numbers(text, num_string, string_length);
     printf_s("num words of numbers = %d\n", words_numbers);
     int words_sings = find_words_of_sings(text, num_string, string_length);
     printf_s("num words of sings = %d\n", words_sings);
-    // Find the biggest number of words
+    // 53-66 finding the biggest number of words
     if (words_letters > words_numbers && words_letters > words_sings)
-    {
         printf_s("number words of letters more than others and equal %d", words_letters);
-    } else if (words_numbers > words_letters && words_numbers > words_sings)
-    {
+    else if (words_numbers > words_letters && words_numbers > words_sings)
         printf_s("number words of numbers more than others and equal %d", words_numbers);
-    }else if (words_sings > words_numbers && words_sings > words_letters)
-    {
+    else if (words_sings > words_numbers && words_sings > words_letters)
         printf_s("number words of sings more than others and equal %d", words_sings);
-    }else if (words_letters == words_numbers && words_letters > words_sings)
-    {
+    else if (words_letters == words_numbers && words_letters > words_sings)
         printf_s("number words of letters equal number words of numbers and equal %d", words_letters);
-    }else if (words_letters == words_sings && words_letters > words_numbers)
-    {
+    else if (words_letters == words_sings && words_letters > words_numbers)
         printf_s("number words of letters equal number words of sings and equal %d", words_letters);
-    }else if (words_numbers == words_sings && words_numbers > words_letters)
-    {
+    else if (words_numbers == words_sings && words_numbers > words_letters)
         printf_s("number words of numbers equal number words of sings and equal %d", words_numbers);
-    }else if (words_letters == words_numbers == words_sings)
-    {
+    else if (words_letters == words_numbers == words_sings)
         printf_s("number of words is the same and equal %d", words_letters);
-    }
-    // Freeing memory
-    free_text(text, num_string);
+    // 68-70 freeing memory
+    for (int i = 0; i < num_string; ++i)
+        free(text[i]);
     free(text);
     return 0;
 }
@@ -84,20 +84,6 @@ int check()
     return number;
 }
 
-// Allocate memory for text, stop program if some problem
-char** create_string_array(char** pointer, int num_string, int string_length)
-{
-    if (!(pointer = (char**)malloc(num_string*sizeof(char*))))
-        exit(1000);
-    for (int i = 0; i < num_string; ++i)
-        if (!(pointer[i] = (char*)malloc((string_length+1)*sizeof(char))))
-        {
-            free_text(pointer, i);
-            exit(1000);
-        }
-    return pointer;
-}
-
 // Get text according to the condition of the task
 void gets_text(char** ptr, int num_string, int string_length)
 {
@@ -108,7 +94,7 @@ void gets_text(char** ptr, int num_string, int string_length)
             ptr[i][j]=(char)getchar();
             if (ptr[i][j] == '\n')
             {
-                ptr[i][j] = '\0';//mb j + 1
+                ptr[i][j] = '\0';
                 break;
             }
             // Condition
@@ -128,12 +114,11 @@ void gets_text(char** ptr, int num_string, int string_length)
     }
 }
 
-// 127-191 word count functions
+// 118-176 word count functions
 int find_words_of_letters(char** pointer, int num_string, int string_length)
 {
     int num_words = 0;
     for (int i = 0; i < num_string; ++i)
-    {
         for (int j = 0; j < string_length; ++j)
         {
             int first = 1;
@@ -147,7 +132,6 @@ int find_words_of_letters(char** pointer, int num_string, int string_length)
                 j = k;
             }
         }
-    }
     return num_words;
 }
 
@@ -155,7 +139,6 @@ int find_words_of_numbers(char** pointer, int num_string, int string_length)
 {
     int num_words = 0;
     for (int i = 0; i < num_string; ++i)
-    {
         for (int j = 0; j < string_length; ++j)
         {
             int first = 1;
@@ -169,7 +152,6 @@ int find_words_of_numbers(char** pointer, int num_string, int string_length)
                 j = k;
             }
         }
-    }
     return num_words;
 }
 
@@ -177,7 +159,6 @@ int find_words_of_sings(char** pointer, int num_string, int string_length)
 {
     int num_words = 0;
     for (int i = 0; i < num_string; ++i)
-    {
         for (int j = 0; j < string_length; ++j)
         {
             int first = 1;
@@ -191,7 +172,6 @@ int find_words_of_sings(char** pointer, int num_string, int string_length)
                 j = k;
             }
         }
-    }
     return num_words;
 }
 
@@ -200,13 +180,4 @@ void puts_text(char** pointer, int num_string)
 {
     for (int i = 0; i < num_string; i++)
         puts(pointer[i]);
-}
-
-// Freeing strings memory
-void free_text(char** pointer, int num_strings)
-{
-    for (int i = 0; i < num_strings; ++i)
-    {
-        free(pointer[i]);
-    }
 }
