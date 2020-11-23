@@ -26,24 +26,24 @@ The C compiler identification is MSVC, found in "C:/3_type_of_words/cmake-build-
 Determining if the C compiler works passed with the following output:
 Change Dir: C:/3_type_of_words/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command(s):nmake /nologo cmTC_0ed81\fast && 	"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\bin\HostX86\x86\nmake.exe"  -f CMakeFiles\cmTC_0ed81.dir\build.make /nologo -L                  CMakeFiles\cmTC_0ed81.dir\build
-Building C object CMakeFiles/cmTC_0ed81.dir/testCCompiler.c.obj
-	C:\PROGRA~2\MICROS~1\2019\COMMUN~1\VC\Tools\MSVC\1428~1.293\bin\Hostx86\x86\cl.exe @C:\Users\sikor\AppData\Local\Temp\nmC58D.tmp
+Run Build Command(s):nmake /nologo cmTC_955ea\fast && 	"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\bin\HostX86\x86\nmake.exe"  -f CMakeFiles\cmTC_955ea.dir\build.make /nologo -L                  CMakeFiles\cmTC_955ea.dir\build
+Building C object CMakeFiles/cmTC_955ea.dir/testCCompiler.c.obj
+	C:\PROGRA~2\MICROS~1\2019\COMMUN~1\VC\Tools\MSVC\1428~1.293\bin\Hostx86\x86\cl.exe @C:\Users\sikor\AppData\Local\Temp\nm4DCC.tmp
 testCCompiler.c
-Linking C executable cmTC_0ed81.exe
-	"C:\Program Files\JetBrains\CLion 2020.2.4\bin\cmake\win\bin\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\cmTC_0ed81.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100183~1.0\x86\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100183~1.0\x86\mt.exe --manifests  -- C:\PROGRA~2\MICROS~1\2019\COMMUN~1\VC\Tools\MSVC\1428~1.293\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\cmTC_0ed81.dir\objects1.rsp @C:\Users\sikor\AppData\Local\Temp\nmC6D6.tmp
+Linking C executable cmTC_955ea.exe
+	"C:\Program Files\JetBrains\CLion 2020.2.4\bin\cmake\win\bin\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\cmTC_955ea.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100183~1.0\x86\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100183~1.0\x86\mt.exe --manifests  -- C:\PROGRA~2\MICROS~1\2019\COMMUN~1\VC\Tools\MSVC\1428~1.293\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\cmTC_955ea.dir\objects1.rsp @C:\Users\sikor\AppData\Local\Temp\nm4DFC.tmp
 
 
 
 Detecting C compiler ABI info compiled with the following output:
 Change Dir: C:/3_type_of_words/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command(s):nmake /nologo cmTC_7bcbb\fast && 	"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\bin\HostX86\x86\nmake.exe"  -f CMakeFiles\cmTC_7bcbb.dir\build.make /nologo -L                  CMakeFiles\cmTC_7bcbb.dir\build
-Building C object CMakeFiles/cmTC_7bcbb.dir/CMakeCCompilerABI.c.obj
-	C:\PROGRA~2\MICROS~1\2019\COMMUN~1\VC\Tools\MSVC\1428~1.293\bin\Hostx86\x86\cl.exe @C:\Users\sikor\AppData\Local\Temp\nmC84C.tmp
+Run Build Command(s):nmake /nologo cmTC_3be82\fast && 	"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\bin\HostX86\x86\nmake.exe"  -f CMakeFiles\cmTC_3be82.dir\build.make /nologo -L                  CMakeFiles\cmTC_3be82.dir\build
+Building C object CMakeFiles/cmTC_3be82.dir/CMakeCCompilerABI.c.obj
+	C:\PROGRA~2\MICROS~1\2019\COMMUN~1\VC\Tools\MSVC\1428~1.293\bin\Hostx86\x86\cl.exe @C:\Users\sikor\AppData\Local\Temp\nm4F24.tmp
 CMakeCCompilerABI.c
-Linking C executable cmTC_7bcbb.exe
-	"C:\Program Files\JetBrains\CLion 2020.2.4\bin\cmake\win\bin\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\cmTC_7bcbb.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100183~1.0\x86\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100183~1.0\x86\mt.exe --manifests  -- C:\PROGRA~2\MICROS~1\2019\COMMUN~1\VC\Tools\MSVC\1428~1.293\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\cmTC_7bcbb.dir\objects1.rsp @C:\Users\sikor\AppData\Local\Temp\nmC88C.tmp
+Linking C executable cmTC_3be82.exe
+	"C:\Program Files\JetBrains\CLion 2020.2.4\bin\cmake\win\bin\cmake.exe" -E vs_link_exe --intdir=CMakeFiles\cmTC_3be82.dir --rc=C:\PROGRA~2\WI3CF2~1\10\bin\100183~1.0\x86\rc.exe --mt=C:\PROGRA~2\WI3CF2~1\10\bin\100183~1.0\x86\mt.exe --manifests  -- C:\PROGRA~2\MICROS~1\2019\COMMUN~1\VC\Tools\MSVC\1428~1.293\bin\Hostx86\x86\link.exe /nologo @CMakeFiles\cmTC_3be82.dir\objects1.rsp @C:\Users\sikor\AppData\Local\Temp\nm4F54.tmp
 
 
 

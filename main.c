@@ -33,7 +33,7 @@ int main()
         if (!(text[i] = (char*)malloc((string_length+1)*sizeof(char))))
         {
             for (int j = 0; j < i; j++)
-                free(text[i]);
+                free(text[j]);
             free(text);
             return 145;
         }
@@ -62,12 +62,14 @@ int main()
         printf_s("number words of letters equal number words of sings and equal %d", words_letters);
     else if (words_numbers == words_sings && words_numbers > words_letters)
         printf_s("number words of numbers equal number words of sings and equal %d", words_numbers);
-    else if (words_letters == words_numbers == words_sings)
+    else if (words_letters == words_numbers && words_letters == words_sings)
         printf_s("number of words is the same and equal %d", words_letters);
     // 68-70 freeing memory
-    for (int i = 0; i < num_string; ++i)
-        free(text[i]);
+    for (int j = 0; j < num_string; j++)
+        free(text[j]);
     free(text);
+    printf_s("\n");
+    getchar();
     return 0;
 }
 
@@ -114,7 +116,7 @@ void gets_text(char** ptr, int num_string, int string_length)
     }
 }
 
-// 118-176 word count functions
+// 120-178 word count functions
 int find_words_of_letters(char** pointer, int num_string, int string_length)
 {
     int num_words = 0;
@@ -179,5 +181,6 @@ int find_words_of_sings(char** pointer, int num_string, int string_length)
 void puts_text(char** pointer, int num_string)
 {
     for (int i = 0; i < num_string; i++)
-        puts(pointer[i]);
+        printf_s("\n%d %s", i, pointer[i]);
+    printf_s("\n");
 }
