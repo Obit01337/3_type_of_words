@@ -11,120 +11,125 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int check();
-void gets_text(char** ptr, int num_string, int string_length);
-void puts_text(char** pointer, int num_string);
-int find_words_of_letters(char** pointer, int num_string, int string_length);
-int find_words_of_numbers(char** pointer, int num_string, int string_length);
-int find_words_of_sings(char** pointer,int num_string, int string_length);
+int check_correct_input(void);
+void text_input(char** text, int num_str, int size_str);
+void text_output(char** text, int num_str);
+int find_words_of_letters(char** text, int num_str, int size_str);
+int find_words_of_numbers(char** text, int num_str, int size_str);
+int find_words_of_sings(char** text, int num_str, int size_str);
 
-int main()
+int main(void)
 {
     // Input text size
     puts("Enter number of strings: ");
-    int num_string = check();
+    int num_str = check_correct_input();
     puts("Enter max length of string");
-    int string_length = check();
+    int size_str = check_correct_input();
     char **text = NULL;
-    // 30-39 creating array for text
-    if (!(text = (char**)malloc(num_string*sizeof(char*))))
+    // Creating array for text
+    if (!(text = (char**)malloc(num_str * sizeof(char*))))
+    {
+        puts("Not enough memory");
+        system("pause");
         return 144;
-    for (int i = 0; i < num_string; ++i)
-        if (!(text[i] = (char*)malloc((string_length+1)*sizeof(char))))
+    }
+    for (int i = 0; i < num_str; i++)
+        if (!(text[i] = (char*)malloc((size_str + 1) * sizeof(char))))
         {
             for (int j = 0; j < i; j++)
                 free(text[j]);
             free(text);
+            puts("Not enough memory");
+            system("pause");
             return 145;
         }
     puts("Enter your text");
     // Input text
-    gets_text(text, num_string, string_length);
+    text_input(text, num_str, size_str);
     // Output text
-    puts_text(text, num_string);
-    // 46-51 finding number of words and print it in console
-    int words_letters = find_words_of_letters(text, num_string, string_length);
-    printf_s("num words of letters = %d\n", words_letters);
-    int words_numbers = find_words_of_numbers(text, num_string, string_length);
-    printf_s("num words of numbers = %d\n", words_numbers);
-    int words_sings = find_words_of_sings(text, num_string, string_length);
-    printf_s("num words of sings = %d\n", words_sings);
-    // 53-66 finding the biggest number of words
-    if (words_letters > words_numbers && words_letters > words_sings)
-        printf_s("number words of letters more than others and equal %d", words_letters);
-    else if (words_numbers > words_letters && words_numbers > words_sings)
-        printf_s("number words of numbers more than others and equal %d", words_numbers);
-    else if (words_sings > words_numbers && words_sings > words_letters)
-        printf_s("number words of sings more than others and equal %d", words_sings);
-    else if (words_letters == words_numbers && words_letters > words_sings)
-        printf_s("number words of letters equal number words of numbers and equal %d", words_letters);
-    else if (words_letters == words_sings && words_letters > words_numbers)
-        printf_s("number words of letters equal number words of sings and equal %d", words_letters);
-    else if (words_numbers == words_sings && words_numbers > words_letters)
-        printf_s("number words of numbers equal number words of sings and equal %d", words_numbers);
-    else if (words_letters == words_numbers && words_letters == words_sings)
-        printf_s("number of words is the same and equal %d", words_letters);
-    // 68-70 freeing memory
-    for (int j = 0; j < num_string; j++)
-        free(text[j]);
+    text_output(text, num_str);
+    // Finding number of words and print it in console
+    int count_let_words = find_words_of_letters(text, num_str, size_str);
+    printf_s("num words of letters = %d\n", count_let_words);
+    int count_num_words = find_words_of_numbers(text, num_str, size_str);
+    printf_s("num words of numbers = %d\n", count_num_words);
+    int count_sing_words = find_words_of_sings(text, num_str, size_str);
+    printf_s("num words of sings = %d\n", count_sing_words);
+    // Finding the biggest number of words
+    if (count_let_words > count_num_words && count_let_words > count_sing_words)
+        printf_s("number words of letters more than others and equal %d\n", count_let_words);
+    else if (count_num_words > count_let_words && count_num_words > count_sing_words)
+        printf_s("number words of numbers more than others and equal %d\n", count_num_words);
+    else if (count_sing_words > count_num_words && count_sing_words > count_let_words)
+        printf_s("number words of sings more than others and equal %d\n", count_sing_words);
+    else if (count_let_words == count_num_words && count_let_words > count_sing_words)
+        printf_s("number words of letters equal number words of numbers and equal %d\n", count_let_words);
+    else if (count_let_words == count_sing_words && count_let_words > count_num_words)
+        printf_s("number words of letters equal number words of sings and equal %d\n", count_let_words);
+    else if (count_num_words == count_sing_words && count_num_words > count_let_words)
+        printf_s("number words of numbers equal number words of sings and equal %d\n", count_num_words);
+    else if (count_let_words == count_num_words && count_let_words == count_sing_words)
+        printf_s("number of words is the same and equal %d\n", count_let_words);
+    // Freeing memory
+    for (int i = 0; i < num_str; i++)
+        free(text[i]);
     free(text);
-    printf_s("\n");
-    getchar();
+    system("pause");
     return 0;
 }
 
 // Function for correct input
-int check()
+int check_correct_input(void)
 {
-    int number;
-    char check;
+    int num;
+    char enter;
     do
     {
         rewind(stdin);
-        puts("Input\t");
-    }while ( !(scanf_s("%d%c", &number, &check)) || check != '\n' || number <= 0);
-    return number;
+        puts("Input");
+    }while (!(scanf_s("%d%c", &num, &enter)) || enter != '\n' || num <= 0);
+    return num;
 }
 
 // Get text according to the condition of the task
-void gets_text(char** ptr, int num_string, int string_length)
+void text_input(char** text, int num_str, int size_str)
 {
-    for (int i = 0; i < num_string; i++)
+    for (int i = 0; i < num_str; i++)
     {
-        for (int j = 0; j < string_length; ++j)
+        for (int j = 0; j < size_str; j++)
         {
-            ptr[i][j]=(char)getchar();
-            if (ptr[i][j] == '\n')
+            text[i][j] = (char)getchar();
+            if (text[i][j] == '\n')
             {
-                ptr[i][j] = '\0';
+                text[i][j] = '\0';
                 break;
             }
             // Condition
-            if (!(((int)ptr[i][j] >= 48 && (int)ptr[i][j] <= 57) || (int)ptr[i][j] == 42 || (int)ptr[i][j] == 43 || (int)ptr[i][j] == 45 || ((int)ptr[i][j] >= 97 && (int)ptr[i][j] <= 122)))
+            if (!((text[i][j] >= 48 && text[i][j] <= 57) || text[i][j] == 42 || text[i][j] == 43 || text[i][j] == 45 || (text[i][j] >= 97 && text[i][j] <= 122)))
             {
                 puts("You typed wrong symbol");
                 puts("Try again");
-                printf("num_string = %d\n", num_string);
-                printf("string_length = %d\n", string_length);
+                printf("num_str = %d\n", num_str);
+                printf("size_str = %d\n", size_str);
                 i--;
                 break;
             }
-            if (j == string_length-1)
-                ptr[i][string_length]= '\0';
+            if (j == size_str - 1)
+                text[i][size_str]= '\0';
         }
         rewind(stdin);
     }
 }
 
-// 120-178 word count functions
-int find_words_of_letters(char** pointer, int num_string, int string_length)
+// 3 word count functions
+int find_words_of_letters(char** text, int num_str, int size_str)
 {
     int num_words = 0;
-    for (int i = 0; i < num_string; ++i)
-        for (int j = 0; j < string_length; ++j)
+    for (int i = 0; i < num_str; i++)
+        for (int j = 0; j < size_str; j++)
         {
             int first = 1;
-            for (int k = j; (int)pointer[i][k] >= 97 && (int)pointer[i][k] <= 122; ++k)
+            for (int k = j; text[i][k] >= 97 && text[i][k] <= 122; k++)
             {
                 if(first == 1)
                 {
@@ -137,14 +142,14 @@ int find_words_of_letters(char** pointer, int num_string, int string_length)
     return num_words;
 }
 
-int find_words_of_numbers(char** pointer, int num_string, int string_length)
+int find_words_of_numbers(char** text, int num_str, int size_str)
 {
     int num_words = 0;
-    for (int i = 0; i < num_string; ++i)
-        for (int j = 0; j < string_length; ++j)
+    for (int i = 0; i < num_str; i++)
+        for (int j = 0; j < size_str; j++)
         {
             int first = 1;
-            for (int k = j; (int)pointer[i][k] >= 48 && (int)pointer[i][k] <= 57; ++k)
+            for (int k = j; text[i][k] >= 48 && text[i][k] <= 57; k++)
             {
                 if(first == 1)
                 {
@@ -157,14 +162,14 @@ int find_words_of_numbers(char** pointer, int num_string, int string_length)
     return num_words;
 }
 
-int find_words_of_sings(char** pointer, int num_string, int string_length)
+int find_words_of_sings(char** text, int num_str, int size_str)
 {
     int num_words = 0;
-    for (int i = 0; i < num_string; ++i)
-        for (int j = 0; j < string_length; ++j)
+    for (int i = 0; i < num_str; i++)
+        for (int j = 0; j < size_str; j++)
         {
             int first = 1;
-            for (int k = j; (int)pointer[i][j] == 42 || (int)pointer[i][j] == 43 || (int)pointer[i][j] == 45; ++k)
+            for (int k = j; text[i][j] == 42 || text[i][j] == 43 || text[i][j] == 45; k++)
             {
                 if(first == 1)
                 {
@@ -178,9 +183,8 @@ int find_words_of_sings(char** pointer, int num_string, int string_length)
 }
 
 // Outputs text
-void puts_text(char** pointer, int num_string)
+void text_output(char** text, int num_str)
 {
-    for (int i = 0; i < num_string; i++)
-        printf_s("\n%d %s", i, pointer[i]);
-    printf_s("\n");
+    for (int i = 0; i < num_str; i++)
+        printf_s("%d %s\n", i, text[i]);
 }
