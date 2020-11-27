@@ -29,9 +29,9 @@ int main(void)
     // Creating array for text
     if (!(text = (char**)malloc(num_str * sizeof(char*))))
     {
-        puts("Not enough memory");
+        puts("Not enough memory\a");
         system("pause");
-        return 144;
+        return 1;
     }
     for (int i = 0; i < num_str; i++)
         if (!(text[i] = (char*)malloc((size_str + 1) * sizeof(char))))
@@ -39,9 +39,9 @@ int main(void)
             for (int j = 0; j < i; j++)
                 free(text[j]);
             free(text);
-            puts("Not enough memory");
+            puts("Not enough memory\a");
             system("pause");
-            return 145;
+            return 1;
         }
     puts("Enter your text");
     // Input text
@@ -87,7 +87,7 @@ int check_correct_input(void)
     {
         rewind(stdin);
         puts("Input");
-    }while (!(scanf_s("%d%c", &num, &enter)) || enter != '\n' || num <= 0);
+    }while ((scanf_s("%d%c", &num, &enter)) != 2 || enter != '\n' || num <= 0);
     return num;
 }
 
